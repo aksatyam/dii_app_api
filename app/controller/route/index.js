@@ -1,0 +1,13 @@
+'use strict';
+let router = require('express').Router();
+const userRoute = require('./user');
+const industryRoute = require('./industry_master');
+const userMasterRoute = require('./user_master');
+const userTypeRoute = require('./user_type');
+const equipRoute = require('./equipment_master');
+router.use('/user', userRoute);
+router.use('/industry', industryRoute);
+router.use('/user_master', userMasterRoute);
+router.use('/user_type',userTypeRoute);
+router.use('/equip_master', equipRoute);
+module.exports= router;
