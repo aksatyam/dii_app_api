@@ -33,6 +33,49 @@ module.exports={
         }
     },
     editShift: async(req, res)=>{
-        
+        let shift=await Shift.findOne({_id: req.params.id});
+        if(!shift)
+        throw validation.errorFormat('Not Found', 'Data Not Found For Entered Shift', 404);
+        shift.indu_id = req.body.indu_id || shift.indu_id;
+        shift.shift_time = req.body.shift_time || shift.shift_time;
+        shift.shift_desc = req.body.shift_desc || shift.shift_desc;
+        await shift.save();
+        res.status(200).send({msg: 'Data Updation Success', data: shift});
+    },
+    gettAllShift: async(req, res)=>{
+        try{
+            let shift= Shift.find({indu_id:req.params.indu_id});
+            if(!shift)
+            throw validation.errorFormat('Not Found','No Data Available for Industry',404);
+            res.status(200).send({msg:'All Shift Data For Industry',data:material});
+        }
+        catch(err){
+            let error;
+            if(!err.code || !err.status || !err.message) {
+                error = validation.errorFormat('internal_error', 'Internal server error', 500);
+            }
+            else{
+                error = err;
+            }
+            res.status(error.status).send({code: error.code, message: error.message});
+        }
+    },
+    getOneShift: async(req, res)=>{
+        try{
+            let shift= Shift.findOne({_id:req.params.id});
+            if(!shift)
+            throw validation.errorFormat('Not Found','No Data Available for Industry',404);
+            res.status(200).send({msg:'All Shift Data For Industry',data:material});
+        }
+        catch(err){
+            let error;
+            if(!err.code || !err.status || !err.message) {
+                error = validation.errorFormat('internal_error', 'Internal server error', 500);
+            }
+            else{
+                error = err;
+            }
+            res.status(error.status).send({code: error.code, message: error.message});
+        }
     }
 }
