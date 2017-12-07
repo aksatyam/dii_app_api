@@ -46,7 +46,7 @@ module.exports={
     },
     getAllMaterial: async(req, res)=>{
         try{
-            let material= Material.find({indu_id:req.params.indu_id});
+            let material= Material.find({indu_id:req.params.id});
             if(!material)
             throw validation.errorFormat('Not Found','No Data Available for Industry',404);
             res.status(200).send({msg:'All Industry Data',data:material});
