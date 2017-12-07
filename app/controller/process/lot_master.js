@@ -91,5 +91,41 @@ module.exports={
         lotsData.lot_qty = req.body.lot_qty;
         await lotsData.save();
         res.status(200).send({msg: 'Data Updation Success', data: lotsData});
+    },
+    getAllLots: async(req, res)=>{
+        try{
+            let lots= Lot.find({indu_id:req.params.id});
+            if(!lots)
+            throw validation.errorFormat('Not Found','No Data Available for Industry',404);
+            res.status(200).send({msg:'All Industry Data',data:lots});
+        }
+        catch(err){
+            let error;
+            if(!err.code || !err.status || !err.message) {
+                error = validation.errorFormat('internal_error', 'Internal server error', 500);
+            }
+            else{
+                error = err;
+            }
+            res.status(error.status).send({code: error.code, message: error.message});
+        }
+    },
+    getOneLot: async(req, res)=>{
+        try{
+            let lot= Lot.findOne({_id:req.params.id});
+            if(!lot)
+            throw validation.errorFormat('Not Found','No Data Available for Industry',404);
+            res.status(200).send({msg:'All Industry Data',data:lot});
+        }
+        catch(err){
+            let error;
+            if(!err.code || !err.status || !err.message) {
+                error = validation.errorFormat('internal_error', 'Internal server error', 500);
+            }
+            else{
+                error = err;
+            }
+            res.status(error.status).send({code: error.code, message: error.message});
+        }
     }
 }
