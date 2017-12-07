@@ -42,7 +42,7 @@ module.exports={
         material.inspection_parem = req.body.material_name || material.material_name;
         material.qulaitycheck_parem = req.body.qulaitycheck_parem || material.qulaitycheck_parem;
         await material.save();
-        res.status(200).send({msg: 'Data Updation Success', data: industry});
+        res.status(200).send({msg: 'Data Updation Success', data: material});
     },
     getAllMaterial: async(req, res)=>{
         try{
