@@ -9,6 +9,7 @@ module.exports =(app)=>{
     require('../app/models/shift_master');
     require('../app/models/shift_hourly_master');
     require('../app/models/lot_master');
+    require('../app/models/super_admin');
     console.log('Models set');
     return app;
 }
