@@ -1,6 +1,7 @@
 'use strict'
 let router= require('express').Router();
-const userFun = require('./../process/super_admin');
+const superAdminFun = require('./../process/super_admin');
 
-router.get('/test', userFun.test);
+router.get('/test', superAdminFun.test);
+router.post('/save', superAdminFun.saveAdmin);
 module.exports = router;

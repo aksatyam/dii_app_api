@@ -13,7 +13,7 @@ module.exports = {
             if(!user){
                 throw validation.errorFormat('Not Found', 'User Not Exists', 404);
             }
-            res.status(200).send({msg:'Data Found Of User : '+req.params.userEmail,data:user});
+            res.status(200).send({msg:'Data Found for User',data:user});
         }
         catch(err){
             let error;
