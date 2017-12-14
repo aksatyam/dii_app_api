@@ -5,5 +5,5 @@ let app=express();
 let config = require('../config')(app);
 
 module.exports=()=>{
-    app.listen(8100,()=> console.log('App started'));
+    app.listen(process.env.PORT || 8100,()=> console.log('App started from master_branch'));
 }
