@@ -29,6 +29,7 @@ module.exports = {
             superAdminData.user_contact = req.body.contact;
             superAdminData.user_email = req.body.email;
             superAdminData.user_password = req.body.password;
+            superAdmin.user_device_id = req.body.deviceId || '';
             await superAdminData.save();
             res.status(200).send({msg: 'done', data: userData});
         }

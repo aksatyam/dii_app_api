@@ -10,6 +10,8 @@ module.exports =(app)=>{
     require('../app/models/shift_hourly_master');
     require('../app/models/lot_master');
     require('../app/models/super_admin');
+    require('../app/models/industry_category');
+    require('../app/models/industry_category_list');
     console.log('Models set');
     return app;
 }

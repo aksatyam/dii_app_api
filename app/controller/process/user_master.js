@@ -49,6 +49,7 @@ module.exports = {
                 userData.user_contact = req.body.contact;
                 userData.user_email = req.body.email;
                 userData.user_password = req.body.password;
+                userData.user_device_id = req.body.deviceId || '';
                 await userData.save();
                 res.status(200).send({msg: 'done', data: userData});
 
