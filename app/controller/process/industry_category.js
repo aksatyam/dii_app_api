@@ -44,11 +44,11 @@ module.exports = {
     },
     getAllCategory: async(req, res)=>{
         try{
-            let industryCategory=await IndustryCategory.find({});
-            if(!industry){
-                throw validation.errorFormat('Not Found','No Data Available for Industry',404)
+            let industryCat=await IndustryCategory.find({});
+            if(!industryCat){
+                throw validation.errorFormat('Not Found','No Data Found',404)
             }
-            res.status(200).send({msg:'All Industry Category Data',data:industryCategory});
+            res.status(200).send({msg:'All Category List',data:industryCat});
         }
         catch(err){
             let error;
