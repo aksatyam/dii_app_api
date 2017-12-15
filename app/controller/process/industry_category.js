@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const IndustryCategory = mongoose.model('Industry_category');
 const Promise = require('bluebird');
 const validation = require('../../helper/validation');
+//Done coding
 module.exports = {
     test(req,res){
         res.status(200).send({message: 'done'});
