@@ -45,7 +45,11 @@ module.exports = {
     getAllCategory: async(req, res)=>{
         try{
 <<<<<<< HEAD
+<<<<<<< HEAD
             let industryCat=await IndustryCategory.find({});
+=======
+           let industryCat=await IndustryCategory.find({});
+>>>>>>> 30a757ee86698998624bc3401cce4cc82b86fb35
 =======
            let industryCat=await IndustryCategory.find({});
 >>>>>>> 30a757ee86698998624bc3401cce4cc82b86fb35
