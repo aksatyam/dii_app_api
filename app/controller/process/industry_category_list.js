@@ -13,7 +13,7 @@ module.exports = {
             throw validation.errorFormat('empty_field', 'Data not present', 400);
             let industryCategoryList = await IndustryCategoryList.findOne({indu_cat_list_name:req.body.category_list_name});
             if(industryCategoryList)
-            throw validation.errorFormat('duplicate', 'Category Already Exists', 409);
+                throw validation.errorFormat('duplicate', 'Category Already Exists', 409);
             let induCatListData = new IndustryCategoryList();
             induCatListData.indu_cat_id = req.body.indu_cat_id;
             induCatListData.indu_cat_list_name = req.body.category_list_name;
