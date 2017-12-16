@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 let industryCategoryList = new Schema({
     indu_cat_id:{type: Schema.Types.ObjectId, ref:'industry_category', required: true},
-    indu_cat_list_name: {type: String, required: true, trim: true},
+    indu_cat_list_name: {type: String, trim: true},
     indu_cat_list_desc:{type: String, trim:true},
     indu_cat__list_is_active:{type: Boolean, default:false}
 },{
