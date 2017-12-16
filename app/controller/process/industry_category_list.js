@@ -45,7 +45,7 @@ module.exports = {
     },
     getAllCategoryList: async(req,res)=>{
         try{
-            let industryCategoryList=await IndustryCategoryList.find({});
+            let industryCategoryList=await IndustryCategoryList.find({indu_cat_id:req.params.indu_cat_id});
             if(!industry){
                 throw validation.errorFormat('Not Found','No Data Available for Industry',404)
             }
