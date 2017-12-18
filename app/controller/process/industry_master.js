@@ -38,11 +38,11 @@ module.exports = {
                 industryData.indu_country = req.body.country;
                 industryData.indu_owner = req.body.owner;
                 industryData.indu_staff_count = req.body.staff_count;
-                industryData.indu_logo = req.body.logo;
-                industryData.indu_website = req.body.website;
+                industryData.indu_logo = req.body.logo || '';
+                industryData.indu_website = req.body.website || '';
                 industryData.indu_description = req.body.description;
                 industryData.indu_estd_year = req.body.estd_year;
-                industryData.indu_is_active= req.body.is_active
+                industryData.indu_is_active= req.body.is_active || false;
                 await industryData.save();
                 res.status(200).send({msg: 'done', data: industryData});
         }
