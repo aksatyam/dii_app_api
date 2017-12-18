@@ -26,7 +26,7 @@ module.exports = {
                         industryData= new Industry();
                     }
                 industryData.indu_category=req.body.indu_category;
-                industryData.indu_sub_ategory=req.body.indu_sub_category;                
+                industryData.indu_sub_category=req.body.indu_sub_category;                
                 industryData.indu_name = req.body.name;
                 industryData.indu_type = req.body.type;
                 industryData.indu_email = req.body.email;
@@ -59,7 +59,7 @@ module.exports = {
     },
     getAllIndustry: async(req,res)=>{
         try{
-            let industry=await Industry.find({});
+            let industry=await Industry.find({indu_category:req.params.indu_category,indu_sub_category:req.params.indu_sub_category});
             if(!industry){
                 throw validation.errorFormat('Not Found','No Data Available for Industry',404)
             }
