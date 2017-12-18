@@ -25,6 +25,8 @@ module.exports = {
                         console.log('Inside');
                         industryData= new Industry();
                     }
+                industryData.indu_category=req.body.indu_category;
+                industryData.indu_sub_ategory=req.body.indu_sub_category;                
                 industryData.indu_name = req.body.name;
                 industryData.indu_type = req.body.type;
                 industryData.indu_email = req.body.email;
