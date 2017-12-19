@@ -9,7 +9,7 @@ let superadmin = new Schema({
     user_contact:{type: String, required: true, trim: true},
     user_password:{type: String, required: true, trim: true},
     user_access_token:{type: String, trim: true},
-    user_device_id:{type : String, trim:true},
+    user_deviceId:{type : String, trim:true},
     user_is_active:{type: Boolean, default: false}
 },{
     timestamps: true,

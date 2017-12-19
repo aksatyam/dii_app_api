@@ -23,19 +23,19 @@ module.exports = {
                 if(validation.emailValidation(req.body.email)){
                     superAdminData= new SuperAdmin();
             }
-            superAdminData.UID = req.body.UID;
+            superAdminData.user_uuid = req.body.UID;
             superAdminData.user_name = req.body.name;
             superAdminData.user_contact = req.body.contact;
             superAdminData.user_email = req.body.email;
             superAdminData.user_password = req.body.password;
-            superAdmin.user_device_id = req.body.deviceId || '';
+            superAdminData.user_deviceId = req.body.deviceId
             await superAdminData.save();
-            res.status(200).send({msg: 'done', data: userData});
+            res.status(200).send({msg: 'done', data: superAdminData});
         }
         catch(err){
             let error;
             if(!err.code || !err.status || !err.message) {
-                error = validation.validation.errorFormat('internal_error', 'Internal server error', 500);
+                error = validation.errorFormat('internal_error', 'Internal server error', 500);
             }
             else{
                 error = err;
