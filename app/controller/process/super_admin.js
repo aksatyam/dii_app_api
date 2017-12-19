@@ -23,8 +23,7 @@ module.exports = {
                 if(validation.emailValidation(req.body.email)){
                     superAdminData= new SuperAdmin();
             }
-            superAdminData.indu_id = req.body.indu_id;
-            superAdminData.user_type_id = req.body.type_id;
+            superAdminData.UID = req.body.UID;
             superAdminData.user_name = req.body.name;
             superAdminData.user_contact = req.body.contact;
             superAdminData.user_email = req.body.email;
