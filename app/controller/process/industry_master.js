@@ -25,6 +25,8 @@ module.exports = {
                         console.log('Inside');
                         industryData= new Industry();
                     }
+                industryData.indu_category=req.body.indu_category;
+                industryData.indu_sub_category=req.body.indu_sub_category;                
                 industryData.indu_name = req.body.name;
                 industryData.indu_type = req.body.type;
                 industryData.indu_email = req.body.email;
@@ -36,11 +38,11 @@ module.exports = {
                 industryData.indu_country = req.body.country;
                 industryData.indu_owner = req.body.owner;
                 industryData.indu_staff_count = req.body.staff_count;
-                industryData.indu_logo = req.body.logo;
-                industryData.indu_website = req.body.website;
+                industryData.indu_logo = req.body.logo || '';
+                industryData.indu_website = req.body.website || '';
                 industryData.indu_description = req.body.description;
                 industryData.indu_estd_year = req.body.estd_year;
-                industryData.indu_is_active= req.body.is_active
+                industryData.indu_is_active= req.body.is_active || false;
                 await industryData.save();
                 res.status(200).send({msg: 'done', data: industryData});
         }
@@ -57,7 +59,7 @@ module.exports = {
     },
     getAllIndustry: async(req,res)=>{
         try{
-            let industry=await Industry.find({});
+            let industry=await Industry.find({indu_category:req.params.indu_category,indu_sub_category:req.params.indu_sub_category});
             if(!industry){
                 throw validation.errorFormat('Not Found','No Data Available for Industry',404)
             }

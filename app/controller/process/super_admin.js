@@ -23,20 +23,38 @@ module.exports = {
                 if(validation.emailValidation(req.body.email)){
                     superAdminData= new SuperAdmin();
             }
-            superAdminData.indu_id = req.body.indu_id;
-            superAdminData.user_type_id = req.body.type_id;
+            superAdminData.user_uuid = req.body.UID;
             superAdminData.user_name = req.body.name;
             superAdminData.user_contact = req.body.contact;
             superAdminData.user_email = req.body.email;
             superAdminData.user_password = req.body.password;
-            superAdmin.user_device_id = req.body.deviceId || '';
+            superAdminData.user_deviceId = req.body.deviceId
             await superAdminData.save();
-            res.status(200).send({msg: 'done', data: userData});
+            res.status(200).send({msg: 'done', data: superAdminData});
         }
         catch(err){
             let error;
             if(!err.code || !err.status || !err.message) {
-                error = validation.validation.errorFormat('internal_error', 'Internal server error', 500);
+                error = validation.errorFormat('internal_error', 'Internal server error', 500);
+            }
+            else{
+                error = err;
+            }
+            res.status(error.status).send({code: error.code, message: error.message});
+        }
+    },
+    getsuperAdminInfo: async(req,res)=>{
+        try{
+            let superadmin=await SuperAdmin.findOne({$and: [{user_uuid: req.body.UID}, {user_password:req.body.password}]});
+            if(!superadmin){
+                throw validation.errorFormat('invalid','Inavlid UserID or Password',409);
+            }
+            res.status(200).send({msg:'done', data:superadmin});
+        }
+        catch(err){
+            let error;
+            if(!err.code || !err.status || !err.message) {
+                error = validation.errorFormat('internal_error', 'Internal server error', 500);
             }
             else{
                 error = err;
