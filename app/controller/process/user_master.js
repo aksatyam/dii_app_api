@@ -67,9 +67,9 @@ module.exports = {
     },
     getAllUser: async(req,res)=>{
         try{
-            let user=await User.find({});
+            let user=await User.find({indu_id:req.params.id});
             if(!user){
-                throw validation.errorFormat('Not Found','No Data Available for User',404)
+                throw validation.errorFormat('Not Found','No Data Available for User',404);
             }
             res.status(200).send({msg:'All User Data',data:user});
         }
@@ -83,6 +83,6 @@ module.exports = {
             }
             res.status(error.status).send({code: error.code, message: error.message});
         }
-        
+
     }
 }
