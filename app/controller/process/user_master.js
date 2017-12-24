@@ -67,7 +67,7 @@ module.exports = {
     },
     getAllUser: async(req,res)=>{
         try{
-            let user=await User.find({indu_id:req.params.id});
+            let user=await User.find({indu_id:req.params.id}).populate('user_type','user_type');
             if(!user){
                 throw validation.errorFormat('Not Found','No Data Available for User',404);
             }
