@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 let material = new Schema({
     indu_id:{type: Schema.Types.ObjectId, ref:'industry_master'},
     material_name:{type: String, required: true, trim: true},
+    material_description:{type:String,trim:true},
     inspection_parem:{type: String, trim:true},
     qulaitycheck_parem:{type: String, trim: true}
 },{

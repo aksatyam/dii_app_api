@@ -16,6 +16,7 @@ module.exports={
             throw validation.errorFormat('duplicate', 'Shift already Exist', 409);
             let shiftData = new Shift();
             shiftData.indu_id = req.body.indu_id;
+            shiftData.shift_name = req.body.shift_name;
             shiftData.shift_time = req.body.shift_time;
             shiftData.shift_start = req.body.start_time;
             shiftData.shift_end = req.body.end_time;
@@ -48,7 +49,7 @@ module.exports={
     },
     gettAllShift: async(req, res)=>{
         try{
-            let shift= Shift.find({indu_id:req.params.indu_id});
+            let shift=await Shift.find({indu_id:req.params.indu_id});
             if(!shift)
             throw validation.errorFormat('Not Found','No Data Available for Industry',404);
             res.status(200).send({msg:'All Shift Data For Industry',data:shift});
@@ -66,7 +67,7 @@ module.exports={
     },
     getOneShift: async(req, res)=>{
         try{
-            let shift= Shift.findOne({_id:req.params.id});
+            let shift=await Shift.findOne({_id:req.params.id});
             if(!shift)
             throw validation.errorFormat('Not Found','No Data Available for Industry',404);
             res.status(200).send({msg:'All Shift Data For Industry',data:shift});

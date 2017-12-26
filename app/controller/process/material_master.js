@@ -17,6 +17,7 @@ module.exports={
             let materialData = new Material();
             materialData.indu_id = req.body.indu_id;
             materialData.material_name = req.body.name;
+            materialData.material_description = req.body.description;
             materialData.inspection_parem = req.body.inspection_parem;
             materialData.qulaitycheck_parem = req.body.qulaitycheck_parem;
             await materialData.save();
