@@ -10,38 +10,38 @@ module.exports={
     saveLot: async(req, res)=>{
         try{
             if(!req.body)
-            throw validation.errorFormat('empty_field', 'Data not present', 400);
+                throw validation.errorFormat('empty_field', 'Data not present', 400);
             let lots= await Lot.findOne({ $and:[{indu_id:req.body.indu_id},{lot_name:req.body.lot_name}]});
             if(lots)
-            throw validation.errorFormat('duplicate', 'Lots already Exist', 409);
+                throw validation.errorFormat('duplicate', 'Lots already Exist', 409);
             let lotsData=new Lot();
             lotsData.indu_id = req.body.indu_id;
             lotsData.lot_name = req.body.lot_name;
-            lotsData.material_1 = req.body.material_1;
-            lotsData.material_2 = req.body.material_2 || '';
-            lotsData.material_3 = req.body.material_3 || '';
-            lotsData.material_4 = req.body.material_4 || '';
-            lotsData.material_5 = req.body.material_5 || '';
-            lotsData.material_6 = req.body.material_6 || '';
-            lotsData.material_7 = req.body.material_7 || '';
-            lotsData.material_8 = req.body.material_8 || '';
-            lotsData.material_9 = req.body.material_9 || '';
-            lotsData.material_10 = req.body.material_10 || '';
-            lotsData.material_11 = req.body.material_11 || '';
-            lotsData.material_12 = req.body.material_12 || '';
-            lotsData.material_13 = req.body.material_13 || '';
-            lotsData.material_14 = req.body.material_14 || '';
-            lotsData.material_15 = req.body.material_15 || '';
-            lotsData.material_16 = req.body.material_16 || '';
-            lotsData.material_17 = req.body.material_17 || '';
-            lotsData.material_18 = req.body.material_18 || '';
-            lotsData.material_19 = req.body.material_19 || '';
-            lotsData.material_20 = req.body.material_20 || '';
-            lotsData.material_21 = req.body.material_21 || '';
-            lotsData.material_22 = req.body.material_22 || '';
-            lotsData.material_23 = req.body.material_23 || '';
-            lotsData.material_24 = req.body.material_24 || '';
-            lotsData.material_25 = req.body.material_25 || '';
+            lotsData.material0 = req.body.material0;
+            lotsData.material1 = req.body.material1;
+            lotsData.material2 = req.body.material2;
+            lotsData.material3 = req.body.material3;
+            lotsData.material4 = req.body.material4;
+            lotsData.material5 = req.body.material5;
+            lotsData.material6 = req.body.material6;
+            lotsData.material7 = req.body.material7;
+            lotsData.material8 = req.body.material8;
+            lotsData.material9 = req.body.material9;
+            lotsData.material10 = req.body.material10;
+            lotsData.material11 = req.body.material11;
+            lotsData.material12 = req.body.material12;
+            lotsData.material13 = req.body.material13;
+            lotsData.material14 = req.body.material14;
+            lotsData.material15 = req.body.material15;
+            lotsData.material16 = req.body.material16;
+            lotsData.material17 = req.body.material17;
+            lotsData.material18 = req.body.material18;
+            lotsData.material19 = req.body.material19;
+            lotsData.material20 = req.body.material20;
+            lotsData.material21 = req.body.material21;
+            lotsData.material22 = req.body.material22;
+            lotsData.material23 = req.body.material23;
+            lotsData.material24 = req.body.material24;
             lotsData.lot_qty = req.body.lot_qty;
             await lotsData.save();
             res.status(200).send({msg: 'done', data: lotsData});
@@ -63,38 +63,38 @@ module.exports={
         throw validation.errorFormat('Not Found', 'Data Not Found For Entered Lot', 404);
         lotsData.indu_id = req.body.indu_id;
         lotsData.lot_name = req.body.lot_name;
-        lotsData.material_1 = req.body.material_1 || lotsData.material_1;
-        lotsData.material_2 = req.body.material_2 || lotsData.material_2;
-        lotsData.material_3 = req.body.material_3 || lotsData.material_3;
-        lotsData.material_4 = req.body.material_4 || lotsData.material_4;
-        lotsData.material_5 = req.body.material_5 || lotsData.material_5;
-        lotsData.material_6 = req.body.material_6 || lotsData.material_6;
-        lotsData.material_7 = req.body.material_7 || lotsData.material_7;
-        lotsData.material_8 = req.body.material_8 || lotsData.material_8;
-        lotsData.material_9 = req.body.material_9 || lotsData.material_9;
-        lotsData.material_10 = req.body.material_10 || lotsData.material_10;
-        lotsData.material_11 = req.body.material_11 || lotsData.material_11;
-        lotsData.material_12 = req.body.material_12 || lotsData.material_12;
-        lotsData.material_13 = req.body.material_13 || lotsData.material_13;
-        lotsData.material_14 = req.body.material_14 || lotsData.material_14;
-        lotsData.material_15 = req.body.material_15 || lotsData.material_15;
-        lotsData.material_16 = req.body.material_16 || lotsData.material_16;
-        lotsData.material_17 = req.body.material_17 || lotsData.material_17;
-        lotsData.material_18 = req.body.material_18 || lotsData.material_18;
-        lotsData.material_19 = req.body.material_19 || lotsData.material_19;
-        lotsData.material_20 = req.body.material_20 || lotsData.material_20;
-        lotsData.material_21 = req.body.material_21 || lotsData.material_21;
-        lotsData.material_22 = req.body.material_22 || lotsData.material_22;
-        lotsData.material_23 = req.body.material_23 || lotsData.material_23;
-        lotsData.material_24 = req.body.material_24 || lotsData.material_24;
-        lotsData.material_25 = req.body.material_25 || lotsData.material_25;
+        lotsData.material0 = req.body.material0 || lotsData.material0;
+        lotsData.material1 = req.body.material1 || lotsData.material1;
+        lotsData.material2 = req.body.material2 || lotsData.material2;
+        lotsData.material3 = req.body.material3 || lotsData.material3;
+        lotsData.material4 = req.body.material4 || lotsData.material4;
+        lotsData.material5 = req.body.material5 || lotsData.material5;
+        lotsData.material6 = req.body.material6 || lotsData.material6;
+        lotsData.material7 = req.body.material7 || lotsData.material7;
+        lotsData.material8 = req.body.material8 || lotsData.material8;
+        lotsData.material9 = req.body.material9 || lotsData.material9;
+        lotsData.material10 = req.body.material10 || lotsData.material10;
+        lotsData.material11 = req.body.material11 || lotsData.material11;
+        lotsData.material12 = req.body.material12 || lotsData.material12;
+        lotsData.material13 = req.body.material13 || lotsData.material13;
+        lotsData.material14 = req.body.material14 || lotsData.material14;
+        lotsData.material15 = req.body.material15 || lotsData.material15;
+        lotsData.material16 = req.body.material16 || lotsData.material16;
+        lotsData.material17 = req.body.material17 || lotsData.material17;
+        lotsData.material18 = req.body.material18 || lotsData.material18;
+        lotsData.material19 = req.body.material19 || lotsData.material19;
+        lotsData.material20 = req.body.material20 || lotsData.material20;
+        lotsData.material21 = req.body.material21 || lotsData.material21;
+        lotsData.material22 = req.body.material22 || lotsData.material22;
+        lotsData.material23 = req.body.material23 || lotsData.material23;
+        lotsData.material24 = req.body.material24 || lotsData.material24;
         lotsData.lot_qty = req.body.lot_qty;
         await lotsData.save();
         res.status(200).send({msg: 'Data Updation Success', data: lotsData});
     },
     getAllLots: async(req, res)=>{
         try{
-            let lots= Lot.find({indu_id:req.params.id});
+            let lots=await Lot.find({indu_id:req.params.id});
             if(!lots)
             throw validation.errorFormat('Not Found','No Data Available for Industry',404);
             res.status(200).send({msg:'All Industry Data',data:lots});
@@ -112,7 +112,7 @@ module.exports={
     },
     getOneLot: async(req, res)=>{
         try{
-            let lot= Lot.findOne({_id:req.params.id});
+            let lot=await Lot.findOne({_id:req.params.id});
             if(!lot)
             throw validation.errorFormat('Not Found','No Data Available for Industry',404);
             res.status(200).send({msg:'All Industry Data',data:lot});

@@ -19,6 +19,7 @@ module.exports={
             stageEquipData.material_master_id = req.body.material_master_id;
             stageEquipData.equipment_master_id = req.body.equipment_master_id;
             stageEquipData.stage_name = req.body.stage_name;
+            stageEquipData.description = req.body.description;
             await stageEquipData.save();
             res.status(200).send({msg: 'done', data: stageEquipData});
         }
@@ -46,7 +47,7 @@ module.exports={
     },
     getAllStageEquipment: async(req, res)=>{
         try{
-            let stageEquipment = await StageEquipment.find({indu_id:req.params.indu_id});
+            let stageEquipment = await StageEquipment.find({indu_id:req.params.id});
             if(!stageEquipment)
             throw validation.errorFormat('Not Found','No Data Available for Industry',404);
             res.status(200).send({msg:'All Industry Data',data:stageEquipment});

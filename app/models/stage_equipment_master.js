@@ -6,6 +6,7 @@ let stageEquipment = new Schema({
     indu_id:{type: Schema.Types.ObjectId, ref:'industry_master'},
     material_master_id:{type: Schema.Types.ObjectId, ref:'material_master'},
     equipment_master_id:{type : Schema.Types.ObjectId, ref:'equipment_master'},
+    description:{type:String, trim:true},
     stage_name:{type:String, require: true, trim:true}
 },{
     timestamps: true,
