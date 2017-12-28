@@ -9,7 +9,7 @@ module.exports = {
     },
     userLogin: async(req, res)=>{
         try{
-            let user=await User.findOne({$and: [{user_email: req.body.userEmail}, {user_password:req.body.userPassword}]});
+            let user=await User.findOne({$and: [{user_email: req.body.userEmail}, {user_password:req.body.userPassword}]}).populate({path: 'user_type_id'});
             if(!user){
                 throw validation.errorFormat('Not Found', 'User Not Exists', 404);
             }
