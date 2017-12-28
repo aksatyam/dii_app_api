@@ -37,7 +37,7 @@ module.exports = {
     },
     userTypeGet: async(req, res)=>{
         try{
-            let userType = await UserType.find({indus_id: req.params.indus_id});
+            let userType = await UserType.find({indu_id: req.params.indu_id});
             if(!userType){
                 throw validation.errorFormat('Not Found','Data Not Available for Your Industry ',404);
             }
