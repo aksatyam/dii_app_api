@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let user = new Schema({
-    indu_id:{type: Schema.Types.ObjectId, ref:'industry_master'},
-    user_type_id:{type: Schema.Types.ObjectId, ref:'user_type'},
+    indu_id:{type: mongoose.Schema.ObjectId, ref:'Industry_master'},
+    user_type_id:{type: mongoose.Schema.ObjectId, ref:'User_type'},
     user_name:{type: String, required: true, trim: true},
     user_email:{type: String, required: true, trim: true},
     user_contact:{type: String, required: true, trim: true},
