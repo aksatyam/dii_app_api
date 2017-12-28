@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let industry = new Schema({
-    indu_category:{type: Schema.Types.ObjectId, ref:'industry_category'},
-    indu_sub_category:{type: Schema.Types.ObjectId, ref:'industry_category_list'},    
+    indu_category:{type: mongoose.Schema.ObjectId, ref:'Industry_category'},
+    indu_sub_category:{type: mongoose.Schema.ObjectId, ref:'Industry_category_list'},    
     indu_name: {type: String,  trim: true},
     indu_type: {type: String,  trim: true},
     indu_email:{type: String,  trim: true, unique: true},

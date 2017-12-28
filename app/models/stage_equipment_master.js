@@ -3,9 +3,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let stageEquipment = new Schema({
-    indu_id:{type: Schema.Types.ObjectId, ref:'industry_master'},
-    material_master_id:{type: Schema.Types.ObjectId, ref:'material_master'},
-    equipment_master_id:{type : Schema.Types.ObjectId, ref:'equipment_master'},
+    indu_id:{type: mongoose.Schema.ObjectId, ref:'Industry_master'},
+    material_master_id:{type: mongoose.Schema.ObjectId, ref:'Material_master'},
+    equipment_master_id:{type : mongoose.Schema.ObjectId, ref:'Equipment_master'},
     description:{type:String, trim:true},
     stage_name:{type:String, require: true, trim:true}
 },{
