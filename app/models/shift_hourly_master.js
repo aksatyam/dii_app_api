@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let shiftHour = new Schema({
-    indu_id:{ type: Schema.Types.ObjectId, ref:'industry_master' },
-    shift_master_id:{ type : Schema.Types.ObjectId, ref:'shift_master' },
+    indu_id:{type: mongoose.Schema.ObjectId, ref:'Industry_master'},
+    shift_master_id:{ type : mongoose.Schema.ObjectId, ref:'Shift_master' },
     shift_hourly_start:{ type: String, required: true, trim: true},
     shift_hourly_end:{ type: String, required: true, trim: true},
     shift_details:{ type: String, required: true, trim: true }
