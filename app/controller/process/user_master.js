@@ -67,13 +67,14 @@ module.exports = {
     },
     getAllUser: async(req,res)=>{
         try{
-            let user=await User.find({indu_id:req.params.id});
+            let user=await User.find({indu_id:req.params.id}).populate({path: 'user_type_id'});
             if(!user){
                 throw validation.errorFormat('Not Found','No Data Available for User',404);
             }
             res.status(200).send({msg:'All User Data',data:user});
         }
         catch(err){
+            console.log('error: ', err);
             let error;
             if(!err.code || !err.status || !err.message) {
                 error = validation.errorFormat('internal_error', 'Internal server error', 500);
