@@ -46,7 +46,7 @@ module.exports={
     },
     getAllShiftHourly: async(req, res)=>{
         try{
-            let shifthourly= ShiftHourly.find({indu_id:req.params.id});
+            let shifthourly= ShiftHourly.find({indu_id:req.params.id}).populate({path: 'indu_id'});
             if(!shifthourly)
             throw validation.errorFormat('Not Found','No Data Available for Industry',404);
             res.status(200).send({msg:'All Shift Hourly Data For Industry',data:shifthourly});
@@ -64,7 +64,7 @@ module.exports={
     },
     getOneShiftHourly: async(req, res)=>{
         try{
-            let shifthourly= ShiftHourly.findOne({_id:req.params.id});
+            let shifthourly= ShiftHourly.findOne({_id:req.params.id}).populate({path: 'indu_id'});
             if(!shifthourly)
             throw validation.errorFormat('Not Found','No Data Available for Industry',404);
             res.status(200).send({msg:'All Shift Data For Industry',data:shifthourly});
