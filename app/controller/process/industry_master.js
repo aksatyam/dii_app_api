@@ -59,7 +59,7 @@ module.exports = {
     },
     getAllIndustry: async(req,res)=>{
         try{
-            let industry=await Industry.find({indu_category:req.params.indu_category,indu_sub_category:req.params.indu_sub_category});
+            let industry=await Industry.find({indu_category:req.params.indu_category,indu_sub_category:req.params.indu_sub_category}).populate('indu_sub_category indu_category');
             if(!industry){
                 throw validation.errorFormat('Not Found','No Data Available for Industry',404)
             }
@@ -80,7 +80,7 @@ module.exports = {
     getOneIndustry: async(req,res)=>{
         try
         {
-            let industry=await Industry.findOne({_id: req.params.indus_id});
+            let industry=await Industry.findOne({_id: req.params.indus_id}).populate('indu_sub_category indu_category');
             if(!industry){
                 throw validation.errorFormat('Not Found', 'Data Not Found Of Industry', 404);
             }
