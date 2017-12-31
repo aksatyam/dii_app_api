@@ -94,33 +94,7 @@ module.exports={
     },
     getAllLots: async(req, res)=>{
         try{
-            let lots=await Lot.find({indu_id:req.params.id})
-                                .populate({path: 'indu_id'})
-                                .populate({path: 'material0'})
-                                .populate({path: 'material1'})
-                                .populate({path: 'material2'})
-                                .populate({path: 'material3'})
-                                .populate({path: 'material4'})
-                                .populate({path: 'material5'})
-                                .populate({path: 'material6'})
-                                .populate({path: 'material7'})
-                                .populate({path: 'material8'})
-                                .populate({path: 'material9'})
-                                .populate({path: 'material10'})
-                                .populate({path: 'material11'})
-                                .populate({path: 'material12'})
-                                .populate({path: 'material13'})
-                                .populate({path: 'material14'})
-                                .populate({path: 'material15'})
-                                .populate({path: 'material16'})
-                                .populate({path: 'material17'})
-                                .populate({path: 'material18'})
-                                .populate({path: 'material19'})
-                                .populate({path: 'material20'})
-                                .populate({path: 'material21'})
-                                .populate({path: 'material22'})
-                                .populate({path: 'material23'})
-                                .populate({path: 'material24'});
+            let lots=await Lot.find({indu_id:req.params.id}).populate('indu_id material0 material1 material2 material3 material4 material5 material6 material7 material8 material9 material10 material11 material12 material13 material14 material15 material16 material17 material18 material19 material20 material21 material22 material23 material24');
             if(!lots)
             throw validation.errorFormat('Not Found','No Data Available for Industry',404);
             res.status(200).send({msg:'All Industry Data',data:lots});
