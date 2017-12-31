@@ -47,7 +47,7 @@ module.exports={
     },
     getAllStageEquipment: async(req, res)=>{
         try{
-            let stageEquipment = await StageEquipment.find({indu_id:req.params.id});
+            let stageEquipment = await StageEquipment.find({indu_id:req.params.id}).populate('indu_id material_master_id equipment_master_id');;
             if(!stageEquipment)
             throw validation.errorFormat('Not Found','No Data Available for Industry',404);
             res.status(200).send({msg:'All Industry Data',data:stageEquipment});
@@ -65,7 +65,7 @@ module.exports={
     },
     getOneStageEquipment: async(req, res)=>{
         try{
-            let stageEquipment = await StageEquipment.findOne({_id:req.params.id});
+            let stageEquipment = await StageEquipment.findOne({_id:req.params.id}).populate('indu_id material_master_id equipment_master_id');
             if(!stageEquipment)
             throw validation.errorFormat('Not Found','No Data Available for Industry',404);
             res.status(200).send({msg:'All Industry Data',data:stageEquipment});

@@ -49,7 +49,7 @@ module.exports={
     },
     gettAllShift: async(req, res)=>{
         try{
-            let shift=await Shift.find({indu_id:req.params.indu_id});
+            let shift=await Shift.find({indu_id:req.params.indu_id}).populate({path: 'indu_id'});
             if(!shift)
             throw validation.errorFormat('Not Found','No Data Available for Industry',404);
             res.status(200).send({msg:'All Shift Data For Industry',data:shift});
@@ -67,7 +67,7 @@ module.exports={
     },
     getOneShift: async(req, res)=>{
         try{
-            let shift=await Shift.findOne({_id:req.params.id});
+            let shift=await Shift.findOne({_id:req.params.id}).populate({path: 'indu_id'});
             if(!shift)
             throw validation.errorFormat('Not Found','No Data Available for Industry',404);
             res.status(200).send({msg:'All Shift Data For Industry',data:shift});

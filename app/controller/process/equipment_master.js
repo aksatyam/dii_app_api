@@ -34,8 +34,7 @@ module.exports={
     },
     getEqipmentOne: async(req,res)=>{
         try{
-            //res.status(200).send({msg: 'done', data: req.params.id});
-            let equipment=await Equipment.find({indu_id:req.params.id});
+            let equipment=await Equipment.find({indu_id:req.params.id}).populate({path: 'indu_id'});
             if(!equipment){
                 throw validation.errorFormat('Not Found', 'Data Not Found Of Industry', 404);
             }
