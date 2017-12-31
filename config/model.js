@@ -12,6 +12,7 @@ module.exports =(app)=>{
     require('../app/models/super_admin');
     require('../app/models/industry_category');
     require('../app/models/industry_category_list');
+    require('../app/models/materialChk');
     console.log('Models set');
     return app;
 }
