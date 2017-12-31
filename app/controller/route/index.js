@@ -14,6 +14,7 @@ const superAdminRoute = require('./super_admin');
 const industryCatRoute = require('./industry_category');
 const industryCatListRoute = require('./industry_category_list');
 const materialChkRoute = require('./materialChk');
+const scheduleMasterRoute = require('./schedule_master');
 router.use('/user', userRoute);
 router.use('/industry', industryRoute);
 router.use('/user_master', userMasterRoute);
@@ -27,5 +28,6 @@ router.use('/lot', lotMasterRoute);
 router.use('/superadmin', superAdminRoute);
 router.use('/industryCategory', industryCatRoute);
 router.use('/industryCategoryList', industryCatListRoute);
-router.use('/materialChk', materialChkRoute)
+router.use('/materialChk', materialChkRoute);
+router.use('/schedule',scheduleMasterRoute);
 module.exports= router;
