@@ -46,7 +46,7 @@ module.exports = {
     },
     getAllCategoryList: async(req,res)=>{
         try{
-            let industryCategoryList=await IndustryCategoryList.find({indu_cat_id:req.params.indu_cat_id}).populate({path: 'indu_cat_id'});
+            let industryCategoryList=await IndustryCategoryList.find({indu_cat_id:req.params.indu_cat_id}).populate('indu_cat_id');
             if(!industryCategoryList){
                 throw validation.errorFormat('Not Found','No Data Available for Industry',404)
             }
