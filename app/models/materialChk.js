@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 let materialChk = new Schema({
     indu_id:{type: mongoose.Schema.ObjectId, ref:'Industry_master'},
-    product_name:{type: String, trim: true},
+    product_id:{type: mongoose.Schema.ObjectId, ref:'Material_master'},
     material0:{type: mongoose.Schema.ObjectId, ref:'Material_master'},
     material0_qty:{type: String, trim: true},
     material1:{type : mongoose.Schema.ObjectId, ref:'Material_master'},
