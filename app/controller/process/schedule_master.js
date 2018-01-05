@@ -122,7 +122,7 @@ module.exports={
     },
     getAllSchedule: async(req,res)=>{
         try{
-            let schedule=await Schedule.find({indu_id:req.params.id}).populate('indu_id stage0 stage1 stage2 stage3 stage4 stage5 stage6 stage7 stage8 stage9 stage10 stage11 stage12 stage13 stage14 stage15 stage16 stage17 stage18 stage19 stage20');
+            let schedule=await Schedule.find({indu_id:req.params.id}).populate('indu_id product_id stage0 stage1 stage2 stage3 stage4 stage5 stage6 stage7 stage8 stage9 stage10 stage11 stage12 stage13 stage14 stage15 stage16 stage17 stage18 stage19 stage20');
             if(!schedule){
                 throw validation.errorFormat('Not Found','No Data Available for Industry',404);
             }
@@ -141,7 +141,7 @@ module.exports={
     },
     getOneSchedule: async(req, res)=>{
         try{
-            let schedule=await Schedule.findOne({indu_id:req.params.id}).populate('indu_id stage0 stage1 stage2 stage3 stage4 stage5 stage6 stage7 stage8 stage9 stage10 stage11 stage12 stage13 stage14 stage15 stage16 stage17 stage18 stage19 stage20');
+            let schedule=await Schedule.findOne({indu_id:req.params.id}).populate('indu_id product_id stage0 stage1 stage2 stage3 stage4 stage5 stage6 stage7 stage8 stage9 stage10 stage11 stage12 stage13 stage14 stage15 stage16 stage17 stage18 stage19 stage20');
             if(!schedule)
             throw validation.errorFormat('Not Found','No Data Available for Industry',404);
             res.status(200).send({msg:'All Product Data',data:schedule});
