@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 let schedule = new Schema({
     indu_id:{type: mongoose.Schema.ObjectId, ref:'Industry_master'},
-    product_id:{type: String, trim: true},
+    product_id:{type: mongoose.Schema.ObjectId, ref:'Material_master'},
     stage0:{type: mongoose.Schema.ObjectId, ref:'Stage_Equipment_master'},
     stage0_perUnitTime:{type: String, trim: true},
     stage1:{type : mongoose.Schema.ObjectId, ref:'Stage_Equipment_master'},
