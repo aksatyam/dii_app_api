@@ -12,7 +12,7 @@ module.exports={
             if(!req.body)
             throw validation.errorFormat('empty_field', 'Data not present', 400);
             let schedule=await Schedule.findOne({ $and:[{indu_id:req.body.indu_id},{product_id:req.body.product_id}]});
-            if(product)
+            if(schedule)
             throw validation.errorFormat('duplicate', 'Product already Exist', 409);
             let scheduleData=new Schedule();
             scheduleData.indu_id = req.body.indu_id;
