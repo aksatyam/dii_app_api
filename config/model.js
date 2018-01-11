@@ -15,6 +15,7 @@ module.exports =(app)=>{
     require('../app/models/materialChk');
     require('../app/models/schedule_master');
     require('../app/models/material_available_master');
+    require('../app/models/schedule_transcation_master');
     console.log('Models set');
     return app;
 }
