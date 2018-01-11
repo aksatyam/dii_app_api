@@ -46,7 +46,7 @@ module.exports={
     },
     getAllMaterialAvailable: async(req, res)=>{
         try{
-            let materialAvailData=await Lot.find({indu_id:req.params.id}).populate('indu_id material_master_id');
+            let materialAvailData=await Material_available.find({indu_id:req.params.id}).populate('indu_id material_master_id');
             if(!materialAvailData)
             throw validation.errorFormat('Not Found','No Data Available for Industry',404);
             res.status(200).send({msg:'All Industry Data', data:materialAvailData});
@@ -64,7 +64,7 @@ module.exports={
     },
     getOneMaterialAvailable: async(req, res)=>{
         try{
-            let materialAvailData=await Lot.findOne({_id:req.params.id}).populate('indu_id material_master_id');
+            let materialAvailData=await Material_available.findOne({_id:req.params.id}).populate('indu_id material_master_id');
             if(!materialAvailData)
             throw validation.errorFormat('Not Found','No Data Available for Industry',404);
             res.status(200).send({msg:'All Industry Data', data:materialAvailData});
