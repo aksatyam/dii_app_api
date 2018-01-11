@@ -61,7 +61,7 @@ module.exports={
         let lotsData=await Lot.findOne({_id: req.params.id});
         if(!lotsData)
         throw validation.errorFormat('Not Found', 'Data Not Found For Entered Lot', 404);
-        lotsData.indu_id = req.body.indu_id;
+        lotsData.indu_id = req.params.id;
         lotsData.lot_name = req.body.lot_name;
         lotsData.material0 = req.body.material0 || lotsData.material0;
         lotsData.material1 = req.body.material1 || lotsData.material1;
