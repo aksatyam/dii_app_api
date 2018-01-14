@@ -177,5 +177,24 @@ module.exports={
             }
             res.status(error.status).send({code: error.code, message: error.message});
         }
+    },
+    getOneProductInfo: async(req, res)=>{
+        try{
+            let product=await MaterialChk.findOne({product_id:req.params.id}).populate('indu_id product_id material0 material1 material2 material3 material4 material5 material6 material7 material8 material9 material10 material11 material12 material13 material14 material15 material16 material17 material18 material19 material20 material21 material22 material23 material24');
+            if(!product)
+            throw validation.errorFormat('Not Found','No Data Available for Industry',404);
+            res.status(200).send({msg:'All Product Data',data:product});
+        }
+        catch(err){
+            let error;
+            if(!err.code || !err.status || !err.message) {
+                error = validation.errorFormat('internal_error', 'Internal server error', 500);
+            }
+            else{
+                error = err;
+            }
+            res.status(error.status).send({code: error.code, message: error.message});
+        }
     }
+
 }
