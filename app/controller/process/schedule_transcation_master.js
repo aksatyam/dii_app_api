@@ -8,7 +8,7 @@ module.exports={
         res.status(200).send({message: 'done'});
     },
     saveScheduleTrans: async(req,res)=>{
-
+        res.status(200).send({msg:'All Schedule Transaction Data',data:req});
     },
     editScheduleTransaction: async(req, res)=>{
 
