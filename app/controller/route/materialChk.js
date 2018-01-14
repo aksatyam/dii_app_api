@@ -6,4 +6,5 @@ router.post('/save', materialChkFunc.saveProduct);
 router.post('/editProduct/:id', materialChkFunc.editProduct);
 router.get('/getAllProduct/:id', materialChkFunc.getAllProduct);
 router.get('/getOneProduct/:id', materialChkFunc.getOneProduct);
+router.get('/getOneProductInfo/:id',materialChkFunc.getOneProductInfo);
 module.exports = router;
