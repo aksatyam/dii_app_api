@@ -104,6 +104,7 @@ module.exports = {
         }
         industry.indu_name = req.body.name || industry.indu_name;
         industry.indu_type = req.body.type || industry.indu_type;
+        industry.indu_address = req.body.address || industry.indu_address;
         industry.indu_city = req.body.city || industry.indu_city;
         industry.indu_state = req.body.state || industry.indu_state;
         industry.indu_pin = req.body.pin || industry.indu_pin;
