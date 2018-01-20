@@ -117,26 +117,26 @@ module.exports = {
     },
     updatePhoneOrEmail: async(req,res)=>{
         try{
-            let industry=await Industry.findOne({_id: req.params.indus_id});
+            let industry=await Industry.findOne({_id: req.body.indus_id});
             if(!industry)
                 throw validation.errorFormat('Not Found', 'Invalid Industry Id', 404);
             let data;
-            if(req.params.type=='101'){
-                data = await Industry.find({indu_contact: req.params.data});
+            if(req.body.type=='101'){
+                data = await Industry.find({indu_contact: req.body.data});
                 if(data.length)  
                     throw validation.errorFormat('duplicate', 'contact already exist', 403);
-                if(validation.phoneValidation(req.params.data)){
-                    industry.indu_contact = req.params.data;
+                if(validation.phoneValidation(req.body.data)){
+                    industry.indu_contact = req.body.data;
                     await industry.save();
                     res.status(200).send({msg: 'done', data: data});
                 }
             }
-            else if(req.params.type=='102'){
-                data = await Industry.find({indu_email: req.params.data});
+            else if(req.body.type=='102'){
+                data = await Industry.find({indu_email: req.body.data});
                 if(data.length)
                     throw validation.errorFormat('duplicate', 'email already exist', 403);
-                if(validation.emailValidation(req.params.data)){
-                    industry.indu_email = req.params.data;
+                if(validation.emailValidation(req.body.data)){
+                    industry.indu_email = req.body.data;
                     await industry.save();
                     res.status(200).send({msg: 'done', data: data});
                 }
