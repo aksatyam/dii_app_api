@@ -6,5 +6,5 @@ router.get('/user_test', userFun.test);
 router.post('/user_save',userFun.userSave);
 router.get('/userAll/:id',userFun.getAllUser);
 router.post('/userGet',userFun.userLogin);
-
+router.post('/editOne',userFun.editOneUser);
 module.exports = router;
