@@ -99,7 +99,6 @@ module.exports = {
                 if(validation.phoneValidation(req.body.contact))
                     if(validation.emailValidation(req.body.email)){
                         console.log('Inside');
-                        // userData= new User();
                     }
                 user.indu_id = req.body.indu_id || user.indu_id;
                 user.user_type_id = req.body.type_id || user.user_type_id;
