@@ -40,6 +40,7 @@ module.exports={
             throw validation.errorFormat('Not Found', 'Data Not Found Of Industry', 404);
         }
         material.material_name = req.body.name || material.material_name;
+        material.material_description = req.body.description || material.material_description;
         material.inspection_parem = req.body.material_name || material.material_name;
         material.qulaitycheck_parem = req.body.qulaitycheck_parem || material.qulaitycheck_parem;
         await material.save();
