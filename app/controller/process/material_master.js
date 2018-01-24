@@ -35,7 +35,7 @@ module.exports={
         }
     },
     editMaterialOne: async(req,res)=>{
-        let material=await Material.findOne({_id: req.params.id});
+        let material=await Material.findOne({_id: req.body.id});
         if(!material){
             throw validation.errorFormat('Not Found', 'Data Not Found Of Industry', 404);
         }
