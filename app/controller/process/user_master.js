@@ -90,7 +90,7 @@ module.exports = {
         try{
             if(!req.body)
             throw validation.errorFormat("empty_field","Data not Present",400);
-            let user=await User.findOne({_id:req.params.id});
+            let user=await User.findOne({_id:req.body.id});
             if(user){
                 if(user.user_contact==req.body.contact)
                     throw validation.errorFormat('duplicate', 'contact number already exist', 409);
