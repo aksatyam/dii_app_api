@@ -85,5 +85,47 @@ module.exports = {
             res.status(error.status).send({code: error.code, message: error.message});
         }
 
+    },
+    editOneUser: async(req, res)=>{
+        try{
+            if(!req.body)
+            throw validation.errorFormat("empty_field","Data not Present",400);
+            let user=await User.findOne({_id:req.params.id});
+            if(user){
+                if(user.user_contact==req.body.contact)
+                    throw validation.errorFormat('duplicate', 'contact number already exist', 409);
+                if(user.user_email == req.body.email)
+                    throw validation.errorFormat('duplicate', 'email already exist', 409);
+                let userData;
+                if(validation.phoneValidation(req.body.contact))
+                    if(validation.emailValidation(req.body.email)){
+                        console.log('Inside');
+                        userData= new User();
+                    }
+                userData.indu_id = req.body.indu_id || userData.indu_id;
+                userData.user_type_id = req.body.type_id || userData.user_type_id;
+                userData.user_name = req.body.name || userData.user_name;
+                userData.user_contact = req.body.contact || userData.user_contact;
+                userData.user_email = req.body.email || userData.user_email;
+                userData.user_password = req.body.password || userData.user_password;
+                userData.user_device_id = req.body.deviceId || userData.user_device_id;
+                await userData.save();
+                res.status(200).send({msg: 'done', data: userData});
+            }
+            throw validation.errorFormat('Not Found','No Data Available for User',404);
+            
+
+        }
+        catch(err){
+            console.log('error: ', err);
+            let error;
+            if(!err.code || !err.status || !err.message) {
+                error = validation.errorFormat('internal_error', 'Internal server error', 500);
+            }
+            else{
+                error = err;
+            }
+            res.status(error.status).send({code: error.code, message: error.message});
+        }
     }
 }
