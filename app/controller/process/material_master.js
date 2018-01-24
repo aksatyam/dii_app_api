@@ -41,7 +41,7 @@ module.exports={
         }
         material.material_name = req.body.name || material.material_name;
         material.material_description = req.body.description || material.material_description;
-        material.inspection_parem = req.body.material_name || material.material_name;
+        material.inspection_parem = req.body.inspection_parem || material.inspection_parem;
         material.qulaitycheck_parem = req.body.qulaitycheck_parem || material.qulaitycheck_parem;
         await material.save();
         res.status(200).send({msg: 'Data Updation Success', data: material});
