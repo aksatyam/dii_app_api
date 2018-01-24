@@ -56,7 +56,7 @@ module.exports={
         try{
             if(!req.body)
                 throw validation.errorFormat('empty_field', 'Data not present', 400);
-            let equipment=await Equipment.findOne({_id: req.params.id});
+            let equipment=await Equipment.findOne({_id: req.body.id});
             if(!equipment)
                 throw validation.errorFormat('Not Found', 'Data Not Found For Equipment', 404);
             equipment.equip_name = req.body.equip_name || equipment.equip_name;
