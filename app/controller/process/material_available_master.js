@@ -34,13 +34,13 @@ module.exports={
         }
     },
     editMaterialAvailable: async(req, res)=>{
-        let materialAvailData=await Material_available.findOne({_id: req.params.id});
+        let materialAvailData=await Material_available.findOne({_id: req.body.id});
         if(!materialAvailData)
         throw validation.errorFormat('Not Found', 'Data Not Found For Entered Material!', 404);
         materialAvailData.indu_id = req.params.id;
         materialAvailData.material_master_id = req.body.material_master_id;
         materialAvailData.available_quantity = req.body.available_quantity ||  materialAvailData.available_quantity;
-        materialAvailData.updated_quantity = req.body.available_quantity || materialAvailData.updated_quantity;
+        materialAvailData.updated_quantity = req.body.updated_quantity || materialAvailData.updated_quantity;
         await materialAvailData.save();
         res.status(200).send({msg: 'Data Updation Success', data: materialAvailData});
     },
