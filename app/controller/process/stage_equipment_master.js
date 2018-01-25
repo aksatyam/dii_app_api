@@ -44,7 +44,7 @@ module.exports={
         stageEquipment.stage_name = req.body.stage_name || stageEquipment.stage_name;
         stageEquipment.description = req.body.description || stageEquipment.description;
         await stageEquipment.save();
-        res.status(200).send({msg: 'Data Updation Success', data: material});
+        res.status(200).send({msg: 'Data Updation Success', data: stageEquipment});
     },
     getAllStageEquipment: async(req, res)=>{
         try{
