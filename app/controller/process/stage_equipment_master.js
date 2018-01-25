@@ -42,6 +42,7 @@ module.exports={
         stageEquipment.material_master_id = req.body.material_master_id || stageEquipment.material_master_id;
         stageEquipment.equipment_master_id = req.body.equipment_master_id || stageEquipment.equipment_master_id;
         stageEquipment.stage_name = req.body.stage_name || stageEquipment.stage_name;
+        stageEquipment.description = req.body.description || stageEquipment.description;
         await stageEquipment.save();
         res.status(200).send({msg: 'Data Updation Success', data: material});
     },
