@@ -34,14 +34,14 @@ module.exports={
         }
     },
     editMaterialAvailable: async(req, res)=>{
-        let materialAvailData=await Material_available.findOne({_id: req.body.id});
-        if(!materialAvailData)
+        let materialAvail=await Material_available.findOne({_id: req.body.id});
+        if(!materialAvail)
         throw validation.errorFormat('Not Found', 'Data Not Found For Entered Material!', 404);
-        materialAvailData.indu_id = req.body.indu_id || materialAvailData.indu_id;
-        materialAvailData.material_master_id = req.body.material_master_id || materialAvailData.material_master_id;
-        materialAvailData.available_quantity = req.body.available_quantity ||  materialAvailData.available_quantity;
-        materialAvailData.updated_quantity = req.body.updated_quantity || materialAvailData.updated_quantity;
-        await materialAvailData.save();
+        materialAvail.indu_id = req.body.indu_id || materialAvail.indu_id;
+        materialAvail.material_master_id = req.body.material_master_id || materialAvail.material_master_id;
+        materialAvail.available_quantity = req.body.available_quantity ||  materialAvail.available_quantity;
+        materialAvail.updated_quantity = req.body.updated_quantity || materialAvail.updated_quantity;
+        await materialAvail.save();
         res.status(200).send({msg: 'Data Updation Success', data: materialAvailData});
     },
     getAllMaterialAvailable: async(req, res)=>{
