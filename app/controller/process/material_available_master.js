@@ -42,7 +42,7 @@ module.exports={
         materialAvail.available_quantity = req.body.available_quantity ||  materialAvail.available_quantity;
         materialAvail.updated_quantity = req.body.updated_quantity || materialAvail.updated_quantity;
         await materialAvail.save();
-        res.status(200).send({msg: 'Data Updation Success', data: materialAvailData});
+        res.status(200).send({msg: 'Data Updation Success', data: materialAvail});
     },
     getAllMaterialAvailable: async(req, res)=>{
         try{
