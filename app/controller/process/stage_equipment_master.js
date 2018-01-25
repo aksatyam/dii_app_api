@@ -35,7 +35,7 @@ module.exports={
         }
     },
     ediitStageEquipment: async(req, res)=>{
-        let stageEquipment = await StageEquipment.findOne({_id: req.params.id});
+        let stageEquipment = await StageEquipment.findOne({_id: req.body.id});
         if(!stageEquipment)
         throw validation.errorFormat('Not Found', 'Data Not Found for Stage Equipment', 404);
         stageEquipment.indu_id = req.body.indu_id || stageEquipment.indu_id;
