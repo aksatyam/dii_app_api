@@ -38,7 +38,7 @@ module.exports={
         if(!materialAvailData)
         throw validation.errorFormat('Not Found', 'Data Not Found For Entered Material!', 404);
         materialAvailData.indu_id = req.body.indu_id || materialAvailData.indu_id;
-        materialAvailData.material_master_id = req.body.id || materialAvailData.material_master_id;
+        materialAvailData.material_master_id = req.body.material_master_id || materialAvailData.material_master_id;
         materialAvailData.available_quantity = req.body.available_quantity ||  materialAvailData.available_quantity;
         materialAvailData.updated_quantity = req.body.updated_quantity || materialAvailData.updated_quantity;
         await materialAvailData.save();
