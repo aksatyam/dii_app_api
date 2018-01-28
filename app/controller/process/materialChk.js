@@ -38,9 +38,9 @@ module.exports={
             throw validation.errorFormat('Not Found', 'Data Not Found Of Product', 404);
         }
         product.product_id = req.body.product_id || product.product_id;
-        productData.materials = req.body.materials || productData.materials;
-        await productData.save();
-        res.status(200).send({msg: 'Data Updation Success', data: productData});
+        product.materials = req.body.materials || product.materials;
+        await product.save();
+        res.status(200).send({msg: 'Data Updation Success', data: product});
         
     },
     getAllProduct: async(req,res)=>{
