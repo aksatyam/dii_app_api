@@ -33,14 +33,14 @@ module.exports={
         }
     },
     editProduct: async(req,res)=>{
-        let product=await MaterialChk.findOne({_id: req.params.id});
+        let product=await MaterialChk.findOne({_id: req.body.id});
         if(!product){
             throw validation.errorFormat('Not Found', 'Data Not Found Of Product', 404);
         }
         product.product_id = req.body.product_id || product.product_id;
         productData.materials = req.body.materials || productData.materials;
         await product.save();
-        res.status(200).send({msg: 'Data Updation Success', data: product});
+        res.status(200).send({msg: 'Data Updation Success', data: productData});
         
     },
     getAllProduct: async(req,res)=>{
