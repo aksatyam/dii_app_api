@@ -18,8 +18,7 @@ module.exports={
             materialData.indu_id = req.body.indu_id;
             materialData.material_name = req.body.name;
             materialData.material_description = req.body.description;
-            materialData.inspection_parem = req.body.inspection_parem;
-            materialData.qulaitycheck_parem = req.body.qulaitycheck_parem;
+            materialData.parameters = req.body.parameters;
             await materialData.save();
             res.status(200).send({msg: 'done', data: materialData});
         }
@@ -41,8 +40,7 @@ module.exports={
         }
         material.material_name = req.body.name || material.material_name;
         material.material_description = req.body.description || material.material_description;
-        material.inspection_parem = req.body.inspection_parem || material.inspection_parem;
-        material.qulaitycheck_parem = req.body.qulaitycheck_parem || material.qulaitycheck_parem;
+        material.parameters = req.body.parameters || material.parameters;
         await material.save();
         res.status(200).send({msg: 'Data Updation Success', data: material});
     },

@@ -6,8 +6,12 @@ let material = new Schema({
     indu_id:{type: mongoose.Schema.ObjectId, ref:'Industry_master'},
     material_name:{type: String, required: true, trim: true},
     material_description:{type:String,trim:true},
-    inspection_parem:{type: String, trim:true},
-    qulaitycheck_parem:{type: String, trim: true}
+    parameters: [
+        {
+            parem_name : { type: String, trim:true },
+            parem_qty: { type: Number, default: 0 }
+        }
+    ]
 },{
     timestamps: true,
     versionKey: false
