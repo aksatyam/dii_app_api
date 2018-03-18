@@ -6,8 +6,8 @@ let schedule_transaction = new Schema({
     indu_id:{type: mongoose.Schema.ObjectId, ref:'Industry_master'},
     product_id:{type: mongoose.Schema.ObjectId, ref:'Material_master'},
     quantity: { type: String, trim: true},
-    fromDate: { type: String, trim: true},
-    toDate:{type: String, trim: true} 
+    fromDate: { type: Number, trim: true},
+    toDate:{type: Number, trim: true} 
 },{
     timestamps: true,
     versionKey: false

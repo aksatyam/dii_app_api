@@ -13,18 +13,18 @@ module.exports={
         try{
             if(!req.body)
                 throw validation.errorFormat('empty_field', 'Data not present', 400);
-            let scheduleTrans=await ScheduleTranscation.findOne({ $and:[{indu_id:req.body.indu_id},{product_id:req.body.product_id}]});
-            if(scheduleTrans)
-                throw validation.errorFormat('duplicate', 'Product already Exist', 409);
+            let scheduleTrans=await ScheduleTranscation.find({ $and:[{indu_id:req.body.indu_id},{product_id:req.body.product_id}], toDate:{$gte: req.body.fromDate}});
+            if(scheduleTrans.length)
+                throw validation.errorFormat('duplicate', 'Product already scheduled on selected duration', 409);
             let product = await materialChk.findOne({product_id: req.body.product_id}).populate('materials.material_id');
             let checkMaterialAvailable = product.materials.filter(d=> typeof d.material_id != 'object');
             if(checkMaterialAvailable.length)
-                throw validation.errorFormat('row_material_absent', 'Some material not present', 409);
+                throw validation.errorFormat('row_material_absent', 'Some raw material not present', 409);
             let metarilList = product.materials.map(d=> {return {_id: d.material_id._id, quantity: d.quantity * req.body.quantity}});
             let checkArray = metarilList.map(d=> d._id);
             let materialAvailData = await Material_available.find({material_master_id: {$in: checkArray}, updated_quantity: {$gt: 0} })
             if(materialAvailData.length < checkArray.length)
-                throw validation.errorFormat('data_absent', 'some material is not available', 409);
+                throw validation.errorFormat('data_absent', 'some raw material quantity is not available in inventory', 409);
             metarilList = metarilList.filter(d=>{
                 let mat_id= materialAvailData.find(item=> item.material_master_id.toString()== d._id.toString());
                 if(d.quantity <= mat_id.updated_quantity)
